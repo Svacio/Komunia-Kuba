@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prezent Komunijny</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6f3ed;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 90%;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      margin: 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #b89e6f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #9c8559;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="page1">
+    <h2>Kochany [imię]!</h2>
+    <p>Dziś jest Twój wielki dzień – pierwszy krok w ważną duchową przygodę.
+    <br><br>
+    Mam dla Ciebie szczególny prezent, ale najpierw musisz rozwiązać małą zagadkę 😄</p>
+    <button onclick="goToPage2()">Rozpocznij</button>
+  </div>
+
+  <div class="container hidden" id="page2">
+    <h3>Zagadka</h3>
+    <p>
+      Jestem nowy, jestem mocny,<br>
+      gamingowy i uroczy.<br>
+      Na mnie czeka Mario nowy,<br>
+      choć premiera jeszcze z głowy.<br>
+      Przenośna? Tak. Domowa? Też!<br><br>
+      ***Kim jestem?***
+    </p>
+    <input type="text" id="answer" placeholder="Wpisz odpowiedź">
+    <br>
+    <button onclick="checkAnswer()">Sprawdź</button>
+    <p id="error" style="color:red;" class="hidden">Niestety, to nie to. Spróbuj jeszcze raz!</p>
+  </div>
+
+  <div class="container hidden" id="page3">
+    <h2>Gratulacje! 🎉</h2>
+    <p>
+      Otrzymałeś ode mnie <strong>Nintendo Switch 2</strong> – najnowszą konsolę, której premiera jest już 5 czerwca!<br><br>
+      Została już dla Ciebie zamówiona – po szczegóły zgłoś się do Wujka Adama! 😊
+    </p>
+  </div>
+
+  <script>
+    function goToPage2() {
+      document.getElementById("page1").classList.add("hidden");
+      document.getElementById("page2").classList.remove("hidden");
+    }
+
+    function checkAnswer() {
+      const answer = document.getElementById("answer").value.trim().toLowerCase();
+      if (answer === "nintendo switch 2") {
+        document.getElementById("page2").classList.add("hidden");
+        document.getElementById("page3").classList.remove("hidden");
+      } else {
+        document.getElementById("error").classList.remove("hidden");
+      }
+    }
+  </script>
+</body>
+</html>
