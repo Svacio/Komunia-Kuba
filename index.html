@@ -11,22 +11,58 @@
       color: #333;
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-      text-align: center;
-      background-image: url('background.jpg');
+      overflow-x: hidden;
+      background-image: url('backg.png');
+      background-attachment: fixed;
       background-size: cover;
       background-position: center;
     }
+
+    .navbar {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      font-weight: bold;
+    }
+
     .container {
       background-color: rgba(255, 255, 255, 0.9);
+      margin: 4rem auto 2rem;
       padding: 2rem;
       border-radius: 12px;
       max-width: 600px;
       width: 90%;
     }
+
+    .scroll-wrapper {
+      max-height: 100vh;
+      overflow-y: auto;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .bold-large {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-weight: bold;
+    }
+
     input[type="text"] {
       padding: 10px;
       font-size: 16px;
@@ -35,8 +71,13 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-    button {
-      padding: 10px 20px;
+
+    .btn-long {
+      display: block;
+      margin: 2rem auto 0;
+      width: 100%;
+      max-width: 300px;
+      padding: 10px;
       font-size: 16px;
       background-color: #b89e6f;
       color: white;
@@ -45,51 +86,78 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-    button:hover {
+
+    .btn-long:hover {
       background-color: #9c8559;
     }
+
     .hidden {
       display: none;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="page1">
-    <h2>Kochany [imię]!</h2>
-    <p>Dziś jest Twój wielki dzień – pierwszy krok w ważną duchową przygodę.
-    <br><br>
-    Mam dla Ciebie szczególny prezent, ale najpierw musisz rozwiązać małą zagadkę 😄</p>
-    <button onclick="goToPage2()">Rozpocznij</button>
-  </div>
+  <div class="navbar" id="navbar">ŻYCZENIA</div>
+  <div class="scroll-wrapper">
+    <div class="container" id="page1">
+      <p class="bold-large">Kuba,</p>
+      <p>
+        Dziś jest Twój wyjątkowy dzień💛<br>
+        Po raz pierwszy przyjmujesz Pana Jezusa do swojego serduszka – to coś naprawdę wielkiego!
+      </p>
+      <p>
+        Życzę Ci, żebyś zawsze miał dużo uśmiechu,<br>
+        żeby spełniały się Twoje marzenia (nawet te najbardziej szalone),<br>
+        żebyś zawsze miał odwagę być sobą,<br>
+        żebyś spotykał dobrych ludzi na swojej drodze,<br>
+        i przede wszystkim żebyś nigdy nie zapominał, jak wyjątkowym chłopakiem jesteś.
+      </p>
+      <p>
+        Niech każdy dzień przynosi Ci coś miłego i ciekawego 🌟<br>
+        Zawsze trzymam za Ciebie kciuki!
+      </p>
+      <p class="footer">Z całego serca<br><strong>Wujek Adam :)</strong></p>
+      <button class="btn-long" onclick="goToPage2()">DALEJ ➤</button>
+    </div>
 
-  <div class="container hidden" id="page2">
-    <h3>Zagadka</h3>
-    <p>
-      Jestem nowy, jestem mocny,<br>
-      gamingowy i uroczy.<br>
-      Na mnie czeka Mario nowy,<br>
-      choć premiera jeszcze z głowy.<br>
-      Przenośna? Tak. Domowa? Też!<br><br>
-      ***Kim jestem?***
-    </p>
-    <input type="text" id="answer" placeholder="Wpisz odpowiedź">
-    <br>
-    <button onclick="checkAnswer()">Sprawdź</button>
-    <p id="error" style="color:red;" class="hidden">Niestety, to nie to. Spróbuj jeszcze raz!</p>
-  </div>
+    <div class="container hidden" id="page2">
+      <div class="navbar">ZAGADKA</div>
+      <h3>Zagadka</h3>
+      <p>
+        Mam ekran, ale nie jestem telefonem.<br>
+        Mam przyciski, ale nie jestem pilotem.<br>
+        Nie mieszczę się w kieszeni,<br>
+        ale zabierzesz mnie wszędzie.<br>
+        Nie jestem książką, a opowiadam setki historii.<br>
+        Umożliwiam zarówno wcielenie się w hydraulika w czerwonej czapce<br>
+        jak i łapanie stworków w kulki.<br><br>
+        <strong>Czym jestem?</strong>
+      </p>
+      <input type="text" id="answer" placeholder="Wpisz odpowiedź">
+      <br>
+      <button class="btn-long" onclick="checkAnswer()">DALEJ ➤</button>
+      <p id="error" style="color:red;" class="hidden">Niestety, to nie to. Spróbuj jeszcze raz!</p>
+    </div>
 
-  <div class="container hidden" id="page3">
-    <h2>Gratulacje! 🎉</h2>
-    <p>
-      Otrzymałeś ode mnie <strong>Nintendo Switch 2</strong> – najnowszą konsolę, której premiera jest już 5 czerwca!<br><br>
-      Została już dla Ciebie zamówiona – po szczegóły zgłoś się do Wujka Adama! 😊
-    </p>
+    <div class="container hidden" id="page3">
+      <div class="navbar">NAGRODA</div>
+      <h2>Gratulacje! 🎉</h2>
+      <p>
+        Otrzymałeś ode mnie <strong>Nintendo Switch 2</strong> – najnowszą konsolę, której premiera jest już 5 czerwca!<br><br>
+        Została już dla Ciebie zamówiona – po szczegóły zgłoś się do Wujka Adama! 😊
+      </p>
+    </div>
   </div>
 
   <script>
+    function updateNavbar(title) {
+      document.getElementById("navbar").innerText = title;
+    }
+
     function goToPage2() {
       document.getElementById("page1").classList.add("hidden");
       document.getElementById("page2").classList.remove("hidden");
+      updateNavbar("ZAGADKA");
     }
 
     function checkAnswer() {
@@ -97,6 +165,7 @@
       if (answer === "nintendo switch 2") {
         document.getElementById("page2").classList.add("hidden");
         document.getElementById("page3").classList.remove("hidden");
+        updateNavbar("NAGRODA");
       } else {
         document.getElementById("error").classList.remove("hidden");
       }
