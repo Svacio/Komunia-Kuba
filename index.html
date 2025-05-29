@@ -143,9 +143,9 @@
         <strong>Czym jestem?</strong>
       </p>
       <input type="text" id="answer" placeholder="Wpisz odpowiedź">
+      <p id="error" style="color:red; margin-top: 0;" class="hidden">Niestety, to nie to. Spróbuj jeszcze raz!</p>
       <br>
       <button class="btn-long" onclick="checkAnswer()">DALEJ ➤</button>
-      <p id="error" style="color:red;" class="hidden">Niestety, to nie to. Spróbuj jeszcze raz!</p>
     </div>
 
     <div class="container hidden" id="page3">
@@ -170,8 +170,18 @@
     }
 
     function checkAnswer() {
+      const validAnswers = [
+        "nintendo switch 2",
+        "nintendoswitch2",
+        "nintendoswitch",
+        "nintendo switch",
+        "nintendo",
+        "switch",
+        "switch 2"
+      ];
+
       const answer = document.getElementById("answer").value.trim().toLowerCase();
-      if (answer === "nintendo switch 2") {
+      if (validAnswers.includes(answer)) {
         document.getElementById("page2").classList.add("hidden");
         document.getElementById("page3").classList.remove("hidden");
         updateNavbar("NAGRODA");
