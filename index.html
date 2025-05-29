@@ -48,6 +48,10 @@
       width: 100%;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 80vh;
     }
 
     h2 {
@@ -61,8 +65,8 @@
     }
 
     .footer {
-      margin-top: 2rem;
       font-weight: bold;
+      margin-bottom: 1rem;
     }
 
     input[type="text"] {
@@ -75,8 +79,7 @@
     }
 
     .btn-long {
-      display: block;
-      margin: 2rem auto 0;
+      margin-top: auto;
       width: 100%;
       max-width: 300px;
       padding: 10px;
@@ -87,6 +90,7 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
+      align-self: center;
     }
 
     .btn-long:hover {
@@ -103,23 +107,25 @@
 
   <div class="scroll-container">
     <div class="container" id="page1">
-      <p class="bold-large">Kuba,</p>
-      <p>
-        Dziś jest Twój wyjątkowy dzień💛<br>
-        Po raz pierwszy przyjmujesz Pana Jezusa do swojego serduszka – to coś naprawdę wielkiego!
-      </p>
-      <p>
-        Życzę Ci, żebyś zawsze miał dużo uśmiechu,<br>
-        żeby spełniały się Twoje marzenia (nawet te najbardziej szalone),<br>
-        żebyś zawsze miał odwagę być sobą,<br>
-        żebyś spotykał dobrych ludzi na swojej drodze,<br>
-        i przede wszystkim żebyś nigdy nie zapominał, jak wyjątkowym chłopakiem jesteś.
-      </p>
-      <p>
-        Niech każdy dzień przynosi Ci coś miłego i ciekawego 🌟<br>
-        Zawsze trzymam za Ciebie kciuki!
-      </p>
-      <p class="footer">Z całego serca<br><strong>Wujek Adam :)</strong></p>
+      <div>
+        <p class="bold-large">Kuba,</p>
+        <p>
+          Dziś jest Twój wyjątkowy dzień💛<br>
+          Po raz pierwszy przyjmujesz Pana Jezusa do swojego serduszka – to coś naprawdę wielkiego!
+        </p>
+        <p>
+          Życzę Ci, żebyś zawsze miał dużo uśmiechu,<br>
+          żeby spełniały się Twoje marzenia (nawet te najbardziej szalone),<br>
+          żebyś zawsze miał odwagę być sobą,<br>
+          żebyś spotykał dobrych ludzi na swojej drodze,<br>
+          i przede wszystkim żebyś nigdy nie zapominał, jak wyjątkowym chłopakiem jesteś.
+        </p>
+        <p>
+          Niech każdy dzień przynosi Ci coś miłego i ciekawego 🌟<br>
+          Zawsze trzymam za Ciebie kciuki!
+        </p>
+        <p class="footer">Z całego serca<br><strong>Wujek Adam :)</strong></p>
+      </div>
       <button class="btn-long" onclick="goToPage2()">DALEJ ➤</button>
     </div>
 
