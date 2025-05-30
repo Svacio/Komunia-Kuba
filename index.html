@@ -72,21 +72,42 @@
       margin-bottom: 1rem;
     }
 
+    .input-hint-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 1rem 0;
+    }
+
     input[type="text"] {
       padding: 10px;
       font-size: 16px;
-      width: 100%;
-      margin: 1rem 0;
+      flex: 1;
       border: 1px solid #ccc;
       border-radius: 5px;
+    }
+
+    .hint-icon {
+      width: 40px;
+      height: 40px;
+      background-color: #f2d37b;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 20px;
     }
 
     .btn-long {
       margin-top: auto;
       width: 100%;
       max-width: 300px;
-      padding: 10px;
+      padding: 12px;
       font-size: 16px;
+      font-weight: bold;
+      font-family: 'Comfortaa', sans-serif;
       background-color: #b89e6f;
       color: white;
       border: none;
@@ -103,9 +124,33 @@
     .hidden {
       display: none;
     }
+
+    .tooltip-box {
+      background-color: #fff9e6;
+      color: #333;
+      border: 1px solid #b89e6f;
+      padding: 10px;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .center-img {
+      display: block;
+      margin: 1rem auto;
+      max-width: 200px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
+
   <div class="navbar" id="navbar">ŻYCZENIA</div>
 
   <div class="scroll-container">
@@ -134,34 +179,47 @@
 
     <div class="container hidden" id="page2">
       <div class="navbar">ZAGADKA</div>
-      <h3>Zagadka</h3>
+      <h3>Przygotowałem dla ciebie coś specjalnego, ale żeby dowiedzieć się co to jest, rozwiąż zagadkę!</h3>
       <p>
         Mam ekran, ale nie jestem telefonem.<br>
         Mam przyciski, ale nie jestem pilotem.<br>
         Nie mieszczę się w kieszeni,<br>
         ale zabierzesz mnie wszędzie.<br>
         Nie jestem książką, a opowiadam setki historii.<br>
-        Umożliwiam zarówno wcielenie się w hydraulika w czerwonej czapce<br>
-        jak i łapanie stworków w kulki.<br><br>
+        Dzięki mnie wcielisz się w hydraulika w czerwonej czapce jak i złapaniesz dużo ciekawych stworków.<br><br>
         <strong>Czym jestem?</strong>
       </p>
-      <input type="text" id="answer" placeholder="Wpisz odpowiedź">
-      <p id="error" style="color:red; margin-top: 0;" class="hidden">Niestety, to nie to. Spróbuj jeszcze raz!</p>
-      <br>
-      <button class="btn-long" onclick="checkAnswer()">DALEJ ➤</button>
+      <p id="error" style="color:red; font-size: 0.9rem; margin: 4px 0;" class="hidden">Niestety, to nie to. Spróbuj jeszcze raz!</p>
+      <div class="input-hint-wrapper">
+        <input type="text" id="answer" placeholder="Wpisz odpowiedź">
+        <div class="hint-icon" onclick="showHint()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M9 21h6v-2H9v2zm3-19a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2zm0 12a5 5 0 0 1-5-5c0-2.76 2.24-5 5-5s5 2.24 5 5a5 5 0 0 1-5 5z"/>
+          </svg>
+        </div>
+      </div>
+      <div id="hint-box" class="hidden tooltip-box">💡 Hydraulik ma na imię Mario</div>
+      <button class="btn-long" onclick="checkAnswer()">SPRAWDŹ ODPOWIEDŹ ➤</button>
     </div>
 
     <div class="container hidden" id="page3">
       <div class="navbar">NAGRODA</div>
       <h2>Gratulacje! 🎉</h2>
       <p>
-        Otrzymałeś ode mnie <strong>Nintendo Switch 2</strong> – najnowszą konsolę, której premiera jest już 5 czerwca!<br><br>
+        Otrzymujesz <strong>Nintendo Switch 2</strong> – najnowszą konsolę, której premiera jest już 5 czerwca!
+      </p>
+      <img src="nintendo icon.png" alt="Nintendo Icon" class="center-img">
+      <p>
         Została już dla Ciebie zamówiona – po szczegóły zgłoś się do Wujka Adama! 😊
       </p>
     </div>
-  </div>
 
   <script>
+    function showHint() {
+      const hintBox = document.getElementById("hint-box");
+      hintBox.classList.remove("hidden");
+    }
+
     function updateNavbar(title) {
       document.getElementById("navbar").innerText = title;
     }
@@ -180,7 +238,8 @@
         "nintendo switch",
         "nintendo",
         "switch",
-        "switch 2"
+        "switch 2",
+        "nintendo switch2"
       ];
 
       const answer = document.getElementById("answer").value.trim().toLowerCase();
